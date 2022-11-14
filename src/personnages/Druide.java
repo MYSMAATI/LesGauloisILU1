@@ -29,19 +29,26 @@ public class Druide {
 		return "Le druide " + nom + " : "; 
 	} 
 	
-	public void preparerPotion() {
+	public int preparerPotion() {
 		Random valeur = new Random();
 		int resultat = valeur.nextInt(10);
 		if (resultat > 7){
-			Panoramix.parler("J'ai  préparé une super potion de force ");
+			this.parler("J'ai  préparé une super potion de force ");
 		}else{
-			Panoramix.parler("Je  n'ai  pas  trouvé  tous  les  ingrédients,  ma  potion  est seulement de force");
+			this.parler("Je  n'ai  pas  trouvé  tous  les  ingrédients,  ma  potion  est seulement de force");
+		}
+		return resultat;
+	}
+	
+	public void booster(Gaulois gaulois){
+		if (gaulois.getNom() == "Obélix"){
+				this.parler("Non, Obélix !... Tu n’auras pas de potion magique !");
 		}
 	}
 	
 	public static void main(String[] args) {
 		Druide Panoramix = new Druide("Panoramix", 5, 10);
-		effetPotion = preparerPotion();
+		int effetPotion = Panoramix.preparerPotion();
 		
 	}
 } 
